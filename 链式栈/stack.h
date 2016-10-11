@@ -1,9 +1,10 @@
 #ifndef STACK_H_
 #define STACK_H_
 #include<iostream> 
+#include<string>
 #include<iomanip>
 using namespace std;
-typedef long Item;
+typedef char Item;
 
 struct Node
 {
@@ -28,7 +29,7 @@ public:
 	bool Push(const Item & e);
 	void Traverse() const;
 	LinkStack(const LinkStack & copy);
-	LinkStack&operator=(const LinkStack & copy);
+	LinkStack & operator=(const LinkStack & copy);
 };
 
 #endif

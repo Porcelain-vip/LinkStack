@@ -69,8 +69,9 @@ bool LinkStack::Push(const Item & e)
 		return false;
 	else
 	{
+		newtop->data = e;
+		newtop->next = top;
 		top = newtop;
-		top->data = e;
 		return true;
 	}
 }
@@ -88,13 +89,13 @@ void LinkStack:: Traverse() const                                  //遍历栈
 LinkStack:: LinkStack(const LinkStack & copy)                      //拷贝构造函数
 {
 	if (copy.top==NULL)
-		top == NULL;
+		top = NULL;
 	else
 	{
 		top = new Node{ copy.top->data };
 		for (Node * tmptr = copy.top->next; tmptr != NULL; tmptr = tmptr->next)
 		{
-			tmptr->next = new Node{ tmptr->data };
+			top->next = new Node{ tmptr->data };
 			top = top->next;
 		}
 	}
@@ -109,13 +110,13 @@ LinkStack & LinkStack:: operator=(const LinkStack &copy)
 		else
 		{
 			Clear();
-			top = new Node(copy.top->data);
+			top = new Node{ copy.top->data };
 			for (Node* tmptr = copy.top->next; tmptr != NULL; tmptr = tmptr->next)
 			{
-				tmptr->next = new Node(tmptr->data);
+				top->next = new Node{ tmptr->data };
 				top = top->next;
 			}
 		}
 	}
-	return *this;
+	return * this;
 }
