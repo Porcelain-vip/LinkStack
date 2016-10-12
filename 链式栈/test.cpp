@@ -10,11 +10,11 @@ int main()
 	if (Ismatch(str))
 		cout << "Well Done" << endl;
 	else
-		cout << "Wrong";
+		cout << "Wrong" << endl;
 	return 0;
 }
 
-bool Ismatch(const string & str)                                               //ÅÐ¶ÏÀ¨ºÅÊÇ·ñÆ¥Åä
+bool Ismatch(const string & str)                                               //ÅÐ¶ÏÀ¨ºÅÊÇ·ñÆ¥Åä ¿Î±¾Àý3.2
 {
 	char tmp;
 	LinkStack one;
@@ -25,7 +25,7 @@ bool Ismatch(const string & str)                                               /
 
 		else if (str[i] == ')')
 		{
-			if (one.Top(tmp), tmp == '(')
+			if (one.Top(tmp) && tmp == '(')
 				one.Pop(tmp);
 			else if (one.Empty())
 				return false;
@@ -35,7 +35,7 @@ bool Ismatch(const string & str)                                               /
 
 		else if (str[i] == ']')
 		{
-			if (one.Top(tmp), tmp == ']')
+			if (one.Top(tmp) && tmp == '[')
 				one.Pop(tmp);
 			else if (one.Empty())
 				return false;
@@ -45,7 +45,7 @@ bool Ismatch(const string & str)                                               /
 
 		else if (str[i] == '}')
 		{
-			if (one.Top(tmp), tmp == '}')
+			if (one.Top(tmp) && tmp == '{')
 				one.Pop(tmp);
 			else if (one.Empty())
 				return false;

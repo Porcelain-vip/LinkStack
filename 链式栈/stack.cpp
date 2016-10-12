@@ -10,17 +10,18 @@ LinkStack::~LinkStack()
 	Clear();
 }
 
-void LinkStack::Clear()
+void LinkStack::Clear()             //删除指针
 {
-	for (Node * tmptr = top; tmptr != NULL; tmptr = tmptr->next)                           //删除指针
+	for (Node * tmptr = top; tmptr != NULL; tmptr = tmptr->next)
 		delete tmptr;
+	top = NULL;
 }
-/*                                                        //Clear()函数的另一种表示
-while( !Empty())          //删除指针                                                            Item data;                         //删除元素
-{                                                                                                                       while(!Empry())
-     Node * tmptr = top ->next;                                                                      Pop(data);
-     delete top;
-     top = tmptr;
+/*
+while (!Empty())                                                            //                 Item data;                                //删除指针
+{                                                                                          //                 while(!Empty())
+    Node * tmptr = top->next;                                     //                       Pop(data);
+    delete top;
+    top = tmptr;
 }
 */
 
@@ -55,9 +56,9 @@ bool LinkStack::Pop(Item & e)
 	else
 	{
 		Node * tmptr = top->next;
-		e = tmptr->data;
-		delete top;
-		top = tmptr;
+		e = top->data;
+		delete top;                          //只是释放所分配内存空间，但是指针top依然依然是有效的
+		top = tmptr;                       //可以继续使用
 		return true;
 	}
 }
